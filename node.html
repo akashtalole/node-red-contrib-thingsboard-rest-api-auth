@@ -1,0 +1,106 @@
+<script type="text/javascript">
+    RED.nodes.registerType('thingsboard-rest-api-auth', {
+        category: 'function',
+        color: '#89bf04',
+        defaults: {
+            method: { value: "", required: true },
+            loginPost_body: { value: "" },
+            loginPost_bodyType: { value: "str" },
+            name: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'icon.png',
+        label: function () {
+            return this.name || this.method || "thingsboard-rest-api-auth";
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        },
+        oneditprepare: function () {
+            var selectedMethod = $('#node-input-method option:selected');
+            if (!selectedMethod.val()) {
+                var methods = $('#node-input-method').children();
+                var firstMethod = methods.first();
+                $('#node-input-method').val(firstMethod.val());
+            }
+
+            var showParameters = function () {
+
+                $("#node-input-loginPost_body").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-loginPost_bodyType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#loginPost_body").hide();
+
+                $("#optional-parameters").hide();
+                $("#optional-parameters-label").hide();
+                if ($("#node-input-method").val() === 'loginPost') {
+
+                }
+
+                if ($("#optional-parameters").prop('checked')) {
+                    if ($("#node-input-method").val() === 'loginPost') {
+
+                    }
+                } else {
+                    if ($("#node-input-method").val() === 'loginPost') {
+
+                    }
+                }
+            };
+
+            $("#node-input-method").change(function () {
+                showParameters();
+            });
+
+            $("#optional-parameters").change(function () {
+                showParameters();
+            });
+
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="thingsboard-rest-api-auth">
+
+    <div class="form-row">
+        <label for="node-input-method"><i class="fa fa-tasks"></i> <span data-i18n="ThingsboardRestApiAuth.label.method"></span></label>
+        <select id="node-input-method">
+            <option value="loginPost" data-i18n="ThingsboardRestApiAuth.parameters.loginPost"></option>
+        </select>
+        &nbsp;
+        <input type="checkbox" id="optional-parameters" style="margin-left: 10px; vertical-align: text-bottom; width: auto;">
+        <label for="optional-parameters" id="optional-parameters-label" style="width: auto;"> <span data-i18n="ThingsboardRestApiAuth.parameters.optionalParameters"></span></label>
+    </div>
+
+    <div class="form-row" id="loginPost_body">
+        <label for="node-input-loginPost_body"><i class="fa fa-list"></i> <span data-i18n="ThingsboardRestApiAuth.parameters.body"></span></label>
+
+        <input type="text" id="node-input-loginPost_body" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-loginPost_bodyType">
+    </div>
+
+    <hr/>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="thingsboard-rest-api-auth">
+
+    <p> ThingsBoard open-source IoT platform REST API documentation.</p>
+    <p><b>Methods</b></p>
+        <h3>POST /api/auth/login</h3>
+        <p>Login method used to authenticate user and get JWT token data.
+
+Value of the response **token** field can be used as **X-Authorization** header value:
+
+`X-Authorization: Bearer $JWT_TOKEN_VALUE`.</p>
+        <dl class="message-properties">
+        <dt>body <span class="property-type"></span></dt>
+        </dl>
+</script>

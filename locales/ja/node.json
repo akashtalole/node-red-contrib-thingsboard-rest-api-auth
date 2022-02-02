@@ -1,0 +1,20 @@
+{
+    "ThingsboardRestApiAuth": {
+        "label": {
+            "service": "サービス",
+            "method": "メソッド",
+            "host": "ホスト",
+            "header": "ヘッダ",
+            "value": "値",
+            "isQuery": "クエリ"
+        },
+        "status": {
+            "requesting": "要求中"
+        },
+        "parameters": {
+            "loginPost": "POST /api/auth/login",
+            "body": "body",
+            "optionalParameters": "任意項目"
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "ThingsboardRestApiAuth": {
+        "label": {
+            "service": "Service",
+            "method": "Method",
+            "host": "Host",
+            "header": "Header",
+            "value": "Value",
+            "isQuery": "isQuery"
+        },
+        "status": {
+            "requesting": "requesting"
+        },
+        "parameters": {
+            "loginPost": "POST /api/auth/login",
+            "body": "body",
+            "optionalParameters": "Options"
+        }
+    }
+}
